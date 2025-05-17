@@ -31,7 +31,8 @@ RUN npm install --only=production
 RUN npm install ffprobe-static
 
 # Expose port (Railway will override this with their own port)
-EXPOSE ${PORT:-5000}
+# We'll expose port 5000, but the app will listen on $PORT which Railway sets
+EXPOSE 5000
 
 # Start the app
 CMD ["npm", "start"]

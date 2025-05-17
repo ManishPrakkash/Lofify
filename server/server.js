@@ -72,6 +72,11 @@ const upload = multer({
 // Initialize Express app
 const app = express();
 
+// Add a health check endpoint for Railway
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 // Middleware
 // In production, allow requests from any origin since frontend and backend are on the same domain
 // In development, only allow requests from the specified CLIENT_URL
