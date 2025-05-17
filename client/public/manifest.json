@@ -1,0 +1,25 @@
+{
+  "short_name": "Lofify",
+  "name": "Lofify - Convert Your Music to Lofi",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "logo192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "logo512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#DB2777",
+  "background_color": "#18181B"
+}

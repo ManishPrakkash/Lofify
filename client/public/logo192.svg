@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" fill="none">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" /> <!-- purple-400 -->
+      <stop offset="100%" stop-color="#DB2777" /> <!-- pink-600 -->
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  <rect width="192" height="192" rx="36" fill="url(#gradient)" filter="url(#shadow)"/>
+  <!-- Heart icon -->
+  <path d="M96 138C93.3 138 90.6 137.1 88.5 135.3C68.7 117.3 54 104.1 54 87.6C54 74.4 64.2 64.2 77.1 64.2C84.3 64.2 91.2 67.8 96 73.5C100.8 67.8 107.7 64.2 114.9 64.2C127.8 64.2 138 74.4 138 87.6C138 104.1 123.3 117.3 103.5 135.3C101.4 137.1 98.7 138 96 138Z" fill="white"/>
+  <path d="M96 138C93.3 138 90.6 137.1 88.5 135.3C68.7 117.3 54 104.1 54 87.6C54 74.4 64.2 64.2 77.1 64.2C84.3 64.2 91.2 67.8 96 73.5C100.8 67.8 107.7 64.2 114.9 64.2C127.8 64.2 138 74.4 138 87.6C138 104.1 123.3 117.3 103.5 135.3C101.4 137.1 98.7 138 96 138Z" fill="white" fill-opacity="0.2" filter="url(#shadow)"/>
+</svg>
