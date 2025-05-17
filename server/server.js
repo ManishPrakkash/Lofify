@@ -10,12 +10,20 @@ import { createRequire } from 'module';
 
 // Use createRequire to handle CommonJS modules
 const require = createRequire(import.meta.url);
-// Import ffprobe-static for the ffprobe path
-const ffprobeStatic = require('ffprobe-static');
 
-// Set up ffmpeg and ffprobe paths
+// Set up ffmpeg path
 ffmpeg.setFfmpegPath(ffmpegStatic);
-ffmpeg.setFfprobePath(ffprobeStatic.path);
+
+// Try to import ffprobe-static for the ffprobe path
+try {
+  // Import ffprobe-static for the ffprobe path
+  const ffprobeStatic = require('ffprobe-static');
+  ffmpeg.setFfprobePath(ffprobeStatic.path);
+  console.log('ffprobe path set successfully');
+} catch (error) {
+  console.warn('Warning: ffprobe-static not found. Some functionality may be limited.');
+  // Try to continue without ffprobe
+}
 
 // Environment variables
 const PORT = process.env.PORT || 5000;
@@ -65,8 +73,10 @@ const upload = multer({
 const app = express();
 
 // Middleware
+// In production, allow requests from any origin since frontend and backend are on the same domain
+// In development, only allow requests from the specified CLIENT_URL
 app.use(cors({
-  origin: CLIENT_URL,
+  origin: process.env.NODE_ENV === 'production' ? '*' : CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());
@@ -240,4 +250,6 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Accepting requests from: ${CLIENT_URL}`);
+  console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+  console.log(`Current working directory: ${process.cwd()}`);
 });

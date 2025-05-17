@@ -1,5 +1,28 @@
 {
+  "name": "lofify",
+  "version": "1.0.0",
+  "description": "Lofify - a lofi audio converter web app",
+  "main": "server/server.js",
+  "type": "module",
+  "scripts": {
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "install": "npm run install-server && npm run install-client",
+    "build-client": "cd client && npm run build",
+    "start-server": "cd server && npm start",
+    "dev-server": "cd server && npm run dev",
+    "dev-client": "cd client && npm run dev",
+    "build": "npm run build-client",
+    "start": "npm run start-server",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\""
+  },
   "dependencies": {
     "ffprobe-static": "^3.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
