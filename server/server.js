@@ -17,6 +17,10 @@ const ffprobeStatic = require('ffprobe-static');
 ffmpeg.setFfmpegPath(ffmpegStatic);
 ffmpeg.setFfprobePath(ffprobeStatic.path);
 
+// Environment variables
+const PORT = process.env.PORT || 5000;
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+
 // ES module fix for __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -59,10 +63,12 @@ const upload = multer({
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: CLIENT_URL,
+  credentials: true
+}));
 app.use(express.json());
 app.use('/processed', express.static(processedDir));
 
@@ -233,4 +239,5 @@ if (process.env.NODE_ENV === 'production') {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Accepting requests from: ${CLIENT_URL}`);
 });

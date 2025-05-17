@@ -15,6 +15,9 @@ import aaruyireOriginal from "../assets/Aaruyire (PenduJatt.Com.Se).mp3"
 import marudaaniOriginal from "../assets/Marudaani (PenduJatt.Com.Se).mp3"
 import nenjukulleOriginal from "../assets/Nenjukkule (PenduJatt.Com.Se).mp3"
 
+// API URL from environment variables
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 function MainContent() {
     const [file, setFile] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -39,7 +42,7 @@ function MainContent() {
             artist: "Bombay Jayashri",
             original: aaruyireOriginal,
             // We'll generate the lofi version dynamically
-            lofi: `/api/lofi-preview?song=aaruyire`
+            lofi: `${API_URL}/api/lofi-preview?song=aaruyire`
         },
         {
             id: 2,
@@ -47,7 +50,7 @@ function MainContent() {
             artist: "A.R. Rahman",
             original: marudaaniOriginal,
             // We'll generate the lofi version dynamically
-            lofi: `/api/lofi-preview?song=marudaani`
+            lofi: `${API_URL}/api/lofi-preview?song=marudaani`
         },
         {
             id: 3,
@@ -55,7 +58,7 @@ function MainContent() {
             artist: "A.R. Rahman",
             original: nenjukulleOriginal,
             // We'll generate the lofi version dynamically
-            lofi: `/api/lofi-preview?song=nenjukulle`
+            lofi: `${API_URL}/api/lofi-preview?song=nenjukulle`
         }
     ]
 
@@ -175,7 +178,7 @@ function MainContent() {
         formData.append("file", file)
 
         try {
-            const response = await fetch("/api/convert", {
+            const response = await fetch(`${API_URL}/api/convert`, {
                 method: "POST",
                 body: formData,
             })

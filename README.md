@@ -83,19 +83,31 @@ lofify/
 
 3. Open your browser and navigate to `http://localhost:5173`
 
-## Building for Production
+## Deployment Instructions
 
-1. Build the frontend:
-   ```
-   cd client
-   npm run build
-   ```
+### Backend Deployment (Railway)
 
-2. Start the production server:
-   ```
-   cd ../server
-   npm start
-   ```
+1. Create a new project on [Railway](https://railway.app)
+2. Connect your GitHub repository
+3. Configure the deployment:
+   - Root directory: `server`
+   - Start command: `node server.js`
+4. Add the following environment variables:
+   - `PORT`: 5000 (or let Railway set it automatically)
+   - `CLIENT_URL`: Your Vercel app URL (after deploying the frontend)
+
+### Frontend Deployment (Vercel)
+
+1. Push your code to a GitHub repository
+2. Create a new project on [Vercel](https://vercel.com)
+3. Import your GitHub repository
+4. Configure the project:
+   - Framework preset: Vite
+   - Root directory: `client`
+   - Build command: `npm run build`
+   - Output directory: `dist`
+5. Add the following environment variables:
+   - `VITE_API_URL`: Your Railway app URL (after deploying the backend)
 
 ## License
 
