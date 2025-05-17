@@ -9,6 +9,9 @@ RUN cd client && npm install
 COPY client/ ./client/
 # Fix permissions and build
 RUN chmod -R 755 ./client/node_modules/.bin/
+# Set API URL for production build - empty string means use relative URLs
+# This works because in production, Express serves the frontend static files
+ENV VITE_API_URL=""
 # Use npx to run vite directly with explicit path
 RUN cd client && node ./node_modules/vite/bin/vite.js build
 
@@ -36,6 +39,9 @@ RUN npm install ffprobe-static
 # Expose port (Railway will override this with their own port)
 # We'll expose port 5000, but the app will listen on $PORT which Railway sets
 EXPOSE 5000
+
+# Set NODE_ENV to production
+ENV NODE_ENV=production
 
 # Start the app
 CMD ["npm", "start"]
