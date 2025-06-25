@@ -10,12 +10,10 @@ import toast, { Toaster } from 'react-hot-toast';
 import { AudioPlayer } from "./AudioPlayer"
 import { Label } from "./ui/label"
 
-// Import song assets
 import aaruyireOriginal from "../assets/Aaruyire (PenduJatt.Com.Se).mp3"
 import marudaaniOriginal from "../assets/Marudaani (PenduJatt.Com.Se).mp3"
 import nenjukulleOriginal from "../assets/Nenjukkule (PenduJatt.Com.Se).mp3"
 
-// API URL from environment variables
 const API_URL = import.meta.env.VITE_API_URL || '';
 
 function MainContent() {
@@ -34,14 +32,12 @@ function MainContent() {
     const animationRef = useRef(null)
     const inputRef = useRef(null)
 
-    // Example tracks
     const exampleTracks = [
         {
             id: 1,
             title: "Aaruyire",
             artist: "Bombay Jayashri",
             original: aaruyireOriginal,
-            // We'll generate the lofi version dynamically
             lofi: `${API_URL}/api/lofi-preview?song=aaruyire`
         },
         {
@@ -49,7 +45,6 @@ function MainContent() {
             title: "Marudaani",
             artist: "A.R. Rahman",
             original: marudaaniOriginal,
-            // We'll generate the lofi version dynamically
             lofi: `${API_URL}/api/lofi-preview?song=marudaani`
         },
         {
@@ -57,13 +52,11 @@ function MainContent() {
             title: "Nenjukulle",
             artist: "A.R. Rahman",
             original: nenjukulleOriginal,
-            // We'll generate the lofi version dynamically
             lofi: `${API_URL}/api/lofi-preview?song=nenjukulle`
         }
     ]
 
     useEffect(() => {
-        // Simulate progress for demo purposes
         if (loading) {
             const interval = setInterval(() => {
                 setProgress(prev => {
@@ -135,13 +128,11 @@ function MainContent() {
     const handleFiles = (files) => {
         const selectedFile = files[0]
 
-        // Check if file is audio
         if (!selectedFile.type.startsWith('audio/')) {
             toast.error('Please upload an audio file (MP3 or WAV)')
             return
         }
 
-        // Check file size (max 15MB)
         if (selectedFile.size > 15 * 1024 * 1024) {
             toast.error('File size exceeds 15MB limit')
             return
@@ -157,12 +148,10 @@ function MainContent() {
     }
 
     const handleExamplePlayPause = (id, playing) => {
-        // Stop any currently playing example
         if (activeExampleId !== id && activeExampleId !== null) {
             setActiveExampleId(null)
         }
 
-        // Toggle the clicked example
         setActiveExampleId(playing ? id : null)
     }
 
