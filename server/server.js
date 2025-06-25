@@ -8,7 +8,7 @@ import ffmpeg from 'fluent-ffmpeg';
 import ffmpegStatic from 'ffmpeg-static';
 import { createRequire } from 'module';
 
-// Use createRequire to handle CommonJS modules
+// Use createRequire to import CommonJS modules in an ES module context (Node.js ESM interop)
 const require = createRequire(import.meta.url);
 
 // Set the path for the ffmpeg binary using ffmpeg-static for cross-platform compatibility
