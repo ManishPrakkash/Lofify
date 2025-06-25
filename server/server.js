@@ -11,7 +11,7 @@ import { createRequire } from 'module';
 // Use createRequire to handle CommonJS modules
 const require = createRequire(import.meta.url);
 
-// Set up ffmpeg path
+// Set the path for the ffmpeg binary using ffmpeg-static for cross-platform compatibility
 ffmpeg.setFfmpegPath(ffmpegStatic);
 
 // Try to import ffprobe-static for the ffprobe path
