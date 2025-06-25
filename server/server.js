@@ -251,6 +251,10 @@ app.post('/api/convert', upload.single('file'), async (req, res) => {
 //   });
 // }
 
+app.get('/', (req, res) => {
+  res.send('🎵 Lofify backend is running!');
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
