@@ -242,14 +242,14 @@ app.post('/api/convert', upload.single('file'), async (req, res) => {
 });
 
 // Serve static files from the React app in production
-if (process.env.NODE_ENV === 'production') {
-  const clientBuildPath = path.join(__dirname, '../client/dist');
-  app.use(express.static(clientBuildPath));
+// if (process.env.NODE_ENV === 'production') {
+//   const clientBuildPath = path.join(__dirname, '../client/dist');
+//   app.use(express.static(clientBuildPath));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
-  });
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.join(clientBuildPath, 'index.html'));
+//   });
+// }
 
 // Start server
 app.listen(PORT, () => {
