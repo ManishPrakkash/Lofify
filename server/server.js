@@ -78,10 +78,9 @@ app.get('/health', (req, res) => {
 });
 
 // Middleware
-// In production, allow requests from any origin since frontend and backend are on the same domain
-// In development, only allow requests from the specified CLIENT_URL
+// Allow requests from any origin in production, or from CLIENT_URL in development
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? '*' : CLIENT_URL,
+  origin: process.env.NODE_ENV === 'production' ? true : CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());
