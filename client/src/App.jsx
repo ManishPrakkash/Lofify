@@ -16,6 +16,7 @@ function App() {
         <MainContent />
       </motion.div>
       <Footer />
+      
     </div>
   )
 }
