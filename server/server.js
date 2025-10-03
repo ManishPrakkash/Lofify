@@ -78,9 +78,15 @@ app.get('/health', (req, res) => {
 });
 
 // Middleware
-// Allow requests from any origin in production, or from CLIENT_URL in development
+// Allow requests from Vercel domain and any origin in production
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://lofify-drab.vercel.app',
+  process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? true : CLIENT_URL,
+  origin: process.env.NODE_ENV === 'production' ? allowedOrigins : CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());

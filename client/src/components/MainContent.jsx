@@ -10,10 +10,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import { AudioPlayer } from "./AudioPlayer"
 import { Label } from "./ui/label"
 
-import aaruyireOriginal from "../assets/Aaruyire (PenduJatt.Com.Se).mp3"
-import marudaaniOriginal from "../assets/Marudaani (PenduJatt.Com.Se).mp3"
-import nenjukulleOriginal from "../assets/Nenjukkule (PenduJatt.Com.Se).mp3"
-
 const API_URL = import.meta.env.VITE_API_URL || '';
 
 function MainContent() {
@@ -37,21 +33,21 @@ function MainContent() {
             id: 1,
             title: "Aaruyire",
             artist: "Bombay Jayashri",
-            original: aaruyireOriginal,
+            original: "/Aaruyire (PenduJatt.Com.Se).mp3",
             lofi: `${API_URL}/api/lofi-preview?song=aaruyire`
         },
         {
             id: 2,
             title: "Marudaani",
             artist: "A.R. Rahman",
-            original: marudaaniOriginal,
+            original: "/Marudaani (PenduJatt.Com.Se).mp3",
             lofi: `${API_URL}/api/lofi-preview?song=marudaani`
         },
         {
             id: 3,
             title: "Nenjukulle",
             artist: "A.R. Rahman",
-            original: nenjukulleOriginal,
+            original: "/Nenjukkule (PenduJatt.Com.Se).mp3",
             lofi: `${API_URL}/api/lofi-preview?song=nenjukulle`
         }
     ]
